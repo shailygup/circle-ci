@@ -1,0 +1,12 @@
+version: 2.1
+jobs:
+  build:
+    docker:
+      - image: python:3
+        environment:
+          APP_ENV: test
+  steps:
+    - checkout
+    - run:
+        name: Signalfx converge
+        command: echo "Hi"
