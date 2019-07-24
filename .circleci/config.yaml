@@ -5,8 +5,8 @@ jobs:
       - image: python:3
         environment:
           APP_ENV: test
-  steps:
-    - checkout
-    - run:
-        name: Signalfx converge
-        command: echo "Hi"
+    steps:
+      - checkout
+      - run:
+          name: Signalfx converge
+          command: echo "Hi"
