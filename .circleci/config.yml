@@ -7,5 +7,5 @@ jobs:
           APP_ENV: test
     steps:
       - run:
-          name: Run Unit tests
-          command: echo "Hi"
+          name: Files Modified
+          command: bash converge.sh
