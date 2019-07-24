@@ -7,5 +7,5 @@ jobs:
           APP_ENV: test
     steps:
       - run:
-          name: Files Modified
-          command: bash converge.sh
+          name: Find branch name
+          command: echo ${CIRCLE_BRANCH}
