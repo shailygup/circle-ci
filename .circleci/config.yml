@@ -7,6 +7,5 @@ jobs:
           APP_ENV: test
     steps:
       - run:
-          name: Find files updated
-          command: |
-                echo ${$CIRCLE_BRANCH}
+          name: Find branch name
+          command: echo ${CIRCLE_BRANCH}
