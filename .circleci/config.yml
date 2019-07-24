@@ -10,3 +10,4 @@ jobs:
           name: Find branch name
           command: |
               echo $CIRCLE_BRANCH
+              if [[ ! -z "$CIRCLE_BRANCH" && "$CIRCLE_BRANCH" != "master" ]]; then git checkout -q master && git reset  -q --soft origin/master && git checkout -q $CIRCLE_BRANCH ; fi
