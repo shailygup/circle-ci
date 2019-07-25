@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 declare -a organization_files
 # files_modified="$(git --no-pager diff --name-only master)"
-CIRCLE_BRANCH='One-more-test'
+# CIRCLE_BRANCH='One-more-test'
 echo "$CIRCLE_BRANCH"
 SAVEIFS=$IFS   # Save current IFS
 IFS=$'\n'      # Change IFS to new line
@@ -23,7 +23,7 @@ converge_all () {
 }
 
 if [[ ! -z "$CIRCLE_BRANCH" && "$CIRCLE_BRANCH" != "master" ]]; then
-	git checkout -q master && git reset  -q --soft origin/master && git checkout -q $CIRCLE_BRANCH && files_modified="$(git --no-pager diff --name-only master)"
+	git checkout -q master && git reset  -q --soft origin/master && git checkout -q $CIRCLE_BRANCH && git pull -q; files_modified="$(git --no-pager diff --name-only master)"
     echo ${files_modified[*]}
     if [[ ${files_modified[*]} =~ signalfx ]]; then
         if [[ ${files_modified[@]} =~ specs || ${files_modified[@]} =~ detectors ]]; then
