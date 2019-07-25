@@ -1,0 +1,6 @@
+something:
+  InstancePort: abcs1
+  InstanceProtocol: HTTP|HTTPS|TCP|SSL
+  LoadBalancerPort: 
+  Protocol: HTTP|HTTPS|TCP|SSL
+  SSLCertificateId: aadc
