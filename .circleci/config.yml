@@ -11,4 +11,4 @@ jobs:
           command: |
               echo $CIRCLE_BRANCH
               cd /app/CleverTutors
-              
+              ls
