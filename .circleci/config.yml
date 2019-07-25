@@ -2,7 +2,7 @@ version: 2.1
 jobs:
   build:
     docker:
-      - image: shailygupta/converge:v2
+      - image: debian:stable-slim
         environment:
           APP_ENV: test
     steps:
