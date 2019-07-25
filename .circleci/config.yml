@@ -2,10 +2,11 @@ version: 2.1
 jobs:
   build:
     docker:
-      - image: python:3
+      - image: shailygupta/converge:v2
         environment:
           APP_ENV: test
     steps:
+      - checkout 
       - run:
-          name: Find branch name
-          command: echo ${CIRCLE_BRANCH}
+          name: SignalFx Converge
+          command: ./scripts/converge.sh
