@@ -8,7 +8,7 @@ jobs:
     steps:
       - run:
           name: Download git
-          command: apt-get install -y git && git --version
+          command: apt install -y git && git --version
       - run:
           name: Clone the repo
           command: git clone https://github.com/shailygup/circle-ci.git; cd circle-ci
