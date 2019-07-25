@@ -11,4 +11,4 @@ jobs:
           command: |
               echo $CIRCLE_BRANCH
               cd /app/circle-ci
-              if [[ ! -z "$CIRCLE_BRANCH" && "$CIRCLE_BRANCH" != "master" ]]; then git checkout -q master && git reset  -q --soft origin/master && git checkout -q ${CIRCLE_BRANCH} ; fi
+              if [[ ! -z "$CIRCLE_BRANCH" && "$CIRCLE_BRANCH" != "master" ]]; then git checkout -q master && git reset  -q --soft origin/master && git checkout -q ${CIRCLE_BRANCH} && git --no-pager diff --name-only master ; fi
