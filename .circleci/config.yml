@@ -2,10 +2,19 @@ version: 2.1
 jobs:
   build:
     docker:
-      - image: debian:stable-slim
+      - image: ubuntu
         environment:
           APP_ENV: test
     steps:
+      - run:
+          name: Download git
+          command: sudo apt install -y git
+      - run:
+          name: Check git version 
+          command: git --version
+      - run:
+          name: Clone the repo
+          command: git clone https://github.com/shailygup/circle-ci.git; cd circle-ci
       - checkout
       - run:
           name: Find branch name
