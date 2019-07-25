@@ -6,6 +6,7 @@ jobs:
         environment:
           APP_ENV: test
     steps:
+      - checkout
       - run:
           name: Find branch name
           command: ./scripts/converge.sh
