@@ -8,5 +8,5 @@ jobs:
     steps:
       - checkout 
       - run:
-          name: Find branch name
+          name: SignalFx Converge
           command: ./scripts/converge.sh
