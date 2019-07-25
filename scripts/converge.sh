@@ -5,7 +5,7 @@ CIRCLE_BRANCH="Adding-Docker-file"
 IFS=$'\n'
 
 if [[ ! -z "$CIRCLE_BRANCH" && "$CIRCLE_BRANCH" != "master" ]]; then
-	git checkout -q master && git reset  -q --soft origin/master && git checkout -q $CIRCLE_BRANCH && "${files_modified}"
+	git checkout -q master && git reset  -q --soft origin/master && git checkout -q $CIRCLE_BRANCH && git --no-pager diff --name-only master
     # echo "${files_modified}"
     for file_name in $files_modified; do
         echo "Line:" "$file_name"
