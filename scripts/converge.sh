@@ -5,7 +5,7 @@ declare -a organization_files
 CIRCLE_BRANCH='last'
 IFS=$'\n'      # Change IFS to new line
 
-converge_organization_dry_run () {
+converge_organization () {
     for file_name in $files_modified; do
         if [[ $file_name = *"organization"* ]]; then
             organization_files+=("$file_name")
@@ -18,7 +18,7 @@ converge_organization_dry_run () {
     fi
 }
 
-converge_all_dry_run () {
+converge_all () {
     if [[ $dry_run == "True" ]]; then
         echo "python cli.py --pd-token 901ff31c40ab4a02ba6a917f02760578 --debug converge --email \"support@cloudreach.com\" --password \"nxICCc%4mJq#9v16\" --dry-run" 
     else
