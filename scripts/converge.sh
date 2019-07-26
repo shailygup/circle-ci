@@ -32,7 +32,7 @@ if [[ ! -z "$CIRCLE_BRANCH" && "$CIRCLE_BRANCH" != "master" ]]; then
 	git checkout -q master && git reset  -q --soft origin/master && git checkout -q $CIRCLE_BRANCH && files_modified="$(git --no-pager diff --name-only master)"
     check_signalfx_directories
 elif [[ "$CIRCLE_BRANCH" == "master" ]]; then
-    files_modifie="$(git --no-pager diff --stat HEAD\^! | grep signalfx | awk '{print $1}')"
-    echo "${files_modifie}"
+    files_modified="$(git --no-pager diff --stat HEAD\^! | grep signalfx | awk '{print $1}')"
+    echo "${files_modified}"
     # check_signalfx_directories
 fi
