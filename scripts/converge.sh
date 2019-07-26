@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 declare -a organization_files
-# CIRCLE_BRANCH='One-more-test'
+CIRCLE_BRANCH='One-more-test'
 IFS=$'\n'      # Change IFS to new line
 
 converge_organization () {
@@ -28,7 +28,21 @@ check_signalfx_directories(){
 
 if [[ ! -z "$CIRCLE_BRANCH" && "$CIRCLE_BRANCH" != "master" ]]; then
 	git checkout -q master && git reset  -q --soft origin/master && git checkout -q $CIRCLE_BRANCH && files_modified="$(git --no-pager diff --name-only master)"
-    check_signalfx_directories
+    # check_signalfx_directories
+    if [[ ${files_modified[*]} =~ signalfx ]]; then
+        if [[ ${files_modified[@]} =~ specs || ${files_modified[@]} =~ detectors ]]; then
+            converge_all
+        elif [[ ${files_modified[@]} =~ organizations ]]; then
+            converge_organization
+        fi
+    fi
 elif [[ "$CIRCLE_BRANCH" == "master" ]]; then
-    check_signalfx_directories
+    # check_signalfx_directories
+    if [[ ${files_modified[*]} =~ signalfx ]]; then
+        if [[ ${files_modified[@]} =~ specs || ${files_modified[@]} =~ detectors ]]; then
+            converge_all
+        elif [[ ${files_modified[@]} =~ organizations ]]; then
+            converge_organization
+        fi
+    fi
 fi
