@@ -42,7 +42,6 @@ if [[ ! -z "$CIRCLE_BRANCH" && "$CIRCLE_BRANCH" != "master" ]]; then
     check_signalfx_directories $dry_run
 elif [[ "$CIRCLE_BRANCH" == "master" ]]; then
     files_modified="$(git --no-pager diff --stat HEAD\^! | grep signalfx | awk '{print $1}')"
-    echo "${files_modified[@]}"
     dry_run="False"
     check_signalfx_directories $dry_run
 fi
