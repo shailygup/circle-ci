@@ -2,7 +2,7 @@
 declare -a organization_files
 # echo "$CIRCLE_SHA1"
 # echo "$CIRCLE_BRANCH"
-CIRCLE_BRANCH='last'
+CIRCLE_BRANCHS='master'
 IFS=$'\n'      # Change IFS to new line
 
 converge_organization () {
@@ -36,7 +36,7 @@ check_signalfx_directories(){
     fi
 }
 
-if [[ ! -z "$CIRCLE_BRANCH" && "$CIRCLE_BRANCH" != "master" ]]; then
+if [[ ! -z "$CIRCLE_BRANCHS" && "$CIRCLE_BRANCHS" != "master" ]]; then
 	git checkout -q master && git reset  -q --soft origin/master && git checkout -q $CIRCLE_BRANCH && files_modified="$(git --no-pager diff --name-only master)"
     dry_run="True"
     check_signalfx_directories $dry_run
