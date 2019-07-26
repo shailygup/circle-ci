@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 declare -a organization_files
-echo '$CIRCLE_SHA1'
-echo '$CIRCLE_BRANCH'
+echo "$CIRCLE_SHA1"
+echo "$CIRCLE_BRANCH"
 # CIRCLE_BRANCH='One-more-test'
 IFS=$'\n'      # Change IFS to new line
 
