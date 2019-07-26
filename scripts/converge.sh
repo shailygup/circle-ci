@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 declare -a organization_files
 # echo "$CIRCLE_SHA1"
-echo "$CIRCLE_BRANCH"
-# CIRCLE_BRANCH='One-more-test'
+# echo "$CIRCLE_BRANCH"
+CIRCLE_BRANCH='master'
 IFS=$'\n'      # Change IFS to new line
 
 converge_organization_dry_run () {
@@ -32,6 +32,7 @@ if [[ ! -z "$CIRCLE_BRANCH" && "$CIRCLE_BRANCH" != "master" ]]; then
 	git checkout -q master && git reset  -q --soft origin/master && git checkout -q $CIRCLE_BRANCH && files_modified="$(git --no-pager diff --name-only master)"
     check_signalfx_directories
 elif [[ "$CIRCLE_BRANCH" == "master" ]]; then
-    git --no-pager diff --stat HEAD\^! | grep signalfx | awk '{print $1}'
+    files_modifie="$(git --no-pager diff --stat HEAD\^! | grep signalfx | awk '{print $1}')"
+    echo "${files_modifie}"
     # check_signalfx_directories
 fi
