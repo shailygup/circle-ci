@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 declare -a organization_files
-echo "$CIRCLE_SHA1"
+# echo "$CIRCLE_SHA1"
 echo "$CIRCLE_BRANCH"
 # CIRCLE_BRANCH='One-more-test'
 IFS=$'\n'      # Change IFS to new line
@@ -32,5 +32,6 @@ if [[ ! -z "$CIRCLE_BRANCH" && "$CIRCLE_BRANCH" != "master" ]]; then
 	git checkout -q master && git reset  -q --soft origin/master && git checkout -q $CIRCLE_BRANCH && files_modified="$(git --no-pager diff --name-only master)"
     check_signalfx_directories
 elif [[ "$CIRCLE_BRANCH" == "master" ]]; then
-    check_signalfx_directories
+    git --no-pager diff --stat HEAD\^! | grep signalfx | awk '{print $1}'
+    # check_signalfx_directories
 fi
