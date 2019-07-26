@@ -28,21 +28,7 @@ check_signalfx_directories(){
 
 if [[ ! -z "$CIRCLE_BRANCH" && "$CIRCLE_BRANCH" != "master" ]]; then
 	git checkout -q master && git reset  -q --soft origin/master && git checkout -q $CIRCLE_BRANCH && files_modified="$(git --no-pager diff --name-only master)"
-    # check_signalfx_directories
-    if [[ ${files_modified[*]} =~ signalfx ]]; then
-        if [[ ${files_modified[@]} =~ specs || ${files_modified[@]} =~ detectors ]]; then
-            converge_all
-        elif [[ ${files_modified[@]} =~ organizations ]]; then
-            converge_organization
-        fi
-    fi
+    check_signalfx_directories
 elif [[ "$CIRCLE_BRANCH" == "master" ]]; then
-    # check_signalfx_directories
-    if [[ ${files_modified[*]} =~ signalfx ]]; then
-        if [[ ${files_modified[@]} =~ specs || ${files_modified[@]} =~ detectors ]]; then
-            converge_all
-        elif [[ ${files_modified[@]} =~ organizations ]]; then
-            converge_organization
-        fi
-    fi
+    check_signalfx_directories
 fi
