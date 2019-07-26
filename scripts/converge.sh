@@ -3,7 +3,6 @@ declare -a organization_files
 CIRCLE_BRANCH='One-more-test'
 SAVEIFS=$IFS   # Save current IFS
 IFS=$'\n'      # Change IFS to new line
-IFS=$SAVEIFS   # Restore IFS
 
 converge_organization () {
     for file_name in $files_modified; do
