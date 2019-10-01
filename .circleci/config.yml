@@ -5,8 +5,7 @@ jobs:
       - checkout
       - run:
           name: Git Pull from Master
-          command: : |
-            git pull origin master
+          command: git pull origin master
   build:
     docker:
       - image: shailygupta/converge:v2
