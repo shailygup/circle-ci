@@ -1,5 +1,12 @@
 version: 2.1
 jobs:
+  git_pull:
+    steps:
+      - checkout
+      - run:
+          name: Git Pull from Master
+          command: : |
+            git pull origin master
   build:
     docker:
       - image: shailygupta/converge:v2
@@ -10,3 +17,4 @@ jobs:
       - run:
           name: SignalFx Converge
           command: ./scripts/converge.sh
+  
